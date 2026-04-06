@@ -53,7 +53,7 @@ export default function Hero() {
           className={`absolute inset-0 transition-opacity duration-700 ${i === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
         >
           <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-miu-navy/85 via-miu-navy/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-miu-navy/90 via-miu-navy/40 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full">
               <div className="max-w-xl">
@@ -67,7 +67,7 @@ export default function Hero() {
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={() => scrollTo(slide.ctaHref)}
-                    className="bg-miu-gold text-miu-navy font-bold px-6 py-3 rounded text-sm hover:bg-yellow-400 transition-colors"
+                    className="bg-miu-gold text-miu-navy font-bold px-6 py-3 rounded text-sm hover:opacity-90 transition-opacity"
                   >
                     {slide.cta}
                   </button>

@@ -17,14 +17,14 @@ export default function Schools() {
     <section id="schools" className="py-14 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-2">
-          <span className="w-8 h-0.5 bg-miu-blue" />
-          <span className="text-miu-blue font-semibold text-xs uppercase tracking-widest">Academic Excellence</span>
+          <span className="w-8 h-0.5 bg-miu-gold" />
+          <span className="text-miu-gold font-semibold text-xs uppercase tracking-widest">Academic Excellence</span>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-4">
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-miu-navy">
             Our Schools
           </h2>
-          <a href="#" className="inline-flex items-center gap-1 text-miu-blue text-sm font-semibold hover:text-miu-navy transition-colors">
+          <a href="#" className="inline-flex items-center gap-1 text-miu-gold text-sm font-semibold hover:text-miu-navy transition-colors">
             View All Programs <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -37,8 +37,8 @@ export default function Schools() {
               onClick={() => setActive(i)}
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 active === i
-                  ? 'bg-miu-blue text-white shadow-md'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-miu-blue hover:text-miu-blue'
+                  ? 'bg-miu-gold text-white shadow-md'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-miu-gold hover:text-miu-gold'
               }`}
             >
               <s.icon className="w-4 h-4" />
@@ -63,7 +63,7 @@ export default function Schools() {
             </div>
             <h3 className="font-heading font-bold text-xl md:text-2xl text-miu-navy mb-3">{schools[active].title}</h3>
             <p className="text-gray-600 leading-relaxed mb-6">{schools[active].description}</p>
-            <a href="#" className="inline-flex items-center gap-2 text-miu-blue font-semibold text-sm hover:text-miu-navy transition-colors">
+            <a href="#" className="inline-flex items-center gap-2 text-miu-gold font-semibold text-sm hover:text-miu-navy transition-colors">
               Explore Programs <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -75,7 +75,7 @@ export default function Schools() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`group relative rounded-xl overflow-hidden h-28 cursor-pointer transition-all ${active === i ? 'ring-2 ring-miu-blue ring-offset-2' : ''}`}
+              className={`group relative rounded-xl overflow-hidden h-28 cursor-pointer transition-all ${active === i ? 'ring-2 ring-miu-gold ring-offset-2' : ''}`}
             >
               <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />

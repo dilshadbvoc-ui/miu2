@@ -35,14 +35,14 @@ export default function NewsEvents() {
     <section id="news" className="py-14 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-2">
-          <span className="w-8 h-0.5 bg-miu-blue" />
-          <span className="text-miu-blue font-semibold text-xs uppercase tracking-widest">Latest Updates</span>
+          <span className="w-8 h-0.5 bg-miu-gold" />
+          <span className="text-miu-gold font-semibold text-xs uppercase tracking-widest">Latest Updates</span>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 gap-4">
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-miu-navy">
             News & Events
           </h2>
-          <a href="#" className="inline-flex items-center gap-1 text-miu-blue text-sm font-semibold hover:text-miu-navy transition-colors">
+          <a href="#" className="inline-flex items-center gap-1 text-miu-gold text-sm font-semibold hover:text-miu-navy transition-colors">
             View All <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -72,8 +72,8 @@ export default function NewsEvents() {
                   <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-4 flex flex-col justify-center">
-                  <span className="inline-block bg-miu-blue/10 text-miu-blue text-xs font-semibold px-2 py-0.5 rounded mb-1.5 w-fit">{n.tag}</span>
-                  <h4 className="font-heading font-bold text-sm text-miu-navy mb-1 group-hover:text-miu-blue transition-colors line-clamp-2">{n.title}</h4>
+                  <span className="inline-block bg-miu-gold/10 text-miu-gold text-xs font-semibold px-2 py-0.5 rounded mb-1.5 w-fit">{n.tag}</span>
+                  <h4 className="font-heading font-bold text-sm text-miu-navy mb-1 group-hover:text-miu-gold transition-colors line-clamp-2">{n.title}</h4>
                   <div className="flex items-center gap-1 text-gray-400 text-xs mt-auto">
                     <Calendar className="w-3 h-3" /> {n.date}
                   </div>
@@ -82,7 +82,7 @@ export default function NewsEvents() {
             ))}
 
             {/* CTA card */}
-            <div className="bg-miu-blue rounded-xl p-5 flex flex-col justify-between">
+            <div className="bg-miu-gold rounded-xl p-5 flex flex-col justify-between">
               <p className="text-white font-heading font-bold text-lg mb-3">Ready to Join MIU?</p>
               <p className="text-white/70 text-sm mb-4">Applications open for 2026-27 session.</p>
               <a

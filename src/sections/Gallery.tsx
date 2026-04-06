@@ -17,8 +17,8 @@ export default function Gallery() {
     <section id="gallery" className="py-14 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-2">
-          <span className="w-8 h-0.5 bg-miu-blue" />
-          <span className="text-miu-blue font-semibold text-xs uppercase tracking-widest">Spotlight</span>
+          <span className="w-8 h-0.5 bg-miu-gold" />
+          <span className="text-miu-gold font-semibold text-xs uppercase tracking-widest">Spotlight</span>
         </div>
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-miu-navy mb-10">
           Where Dream Turns into Reality
@@ -36,7 +36,7 @@ export default function Gallery() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <ZoomIn className="w-5 h-5 text-miu-blue" />
+                    <ZoomIn className="w-5 h-5 text-miu-gold" />
                   </div>
                 </div>
                 <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity">

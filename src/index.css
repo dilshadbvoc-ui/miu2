@@ -7,33 +7,32 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 21 33% 18%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 21 33% 18%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 224 76% 33%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 45 70% 52%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
+    --popover-foreground: 21 33% 18%;
+    --primary: 45 100% 49%;
+    --primary-foreground: 21 33% 18%;
+    --secondary: 21 33% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 21 15% 40%;
+    --accent: 45 100% 49%;
+    --accent-foreground: 21 33% 18%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 224 76% 33%;
+    --border: 21 15% 90%;
+    --input: 21 15% 90%;
+    --ring: 45 100% 49%;
     --radius: 0.5rem;
     
     /* Custom MIU Colors */
-    --miu-blue: 224 76% 33%;
-    --miu-blue-light: 217 91% 60%;
-    --miu-gold: 45 70% 52%;
-    --miu-gold-light: 48 89% 60%;
-    --miu-navy: 222 47% 11%;
-    --miu-gray: 215 16% 47%;
+    --miu-gold: 45 100% 49%;
+    --miu-gold-light: 48 100% 60%;
+    --miu-navy: 21 33% 18%;
+    --miu-gray: 21 15% 45%;
+    --miu-cream: 0 0% 97%;
     
     /* Animation Easings */
     --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
@@ -68,11 +67,11 @@
 @layer components {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--miu-blue)) 0%, hsl(var(--miu-blue-light)) 100%);
+    background-image: linear-gradient(135deg, hsl(var(--miu-gold)) 0%, hsl(var(--miu-gold-light)) 100%);
   }
   
   .bg-gradient-miu {
-    background: linear-gradient(135deg, hsl(var(--miu-blue)) 0%, hsl(224 60% 25%) 100%);
+    background: linear-gradient(135deg, hsl(var(--miu-gold)) 0%, hsl(var(--miu-navy)) 100%);
   }
   
   .glass-effect {
@@ -133,12 +132,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--miu-blue));
+  background: hsl(var(--miu-gold));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--miu-blue-light));
+  background: hsl(var(--miu-gold-light));
 }
 
 /* Reduced Motion */

@@ -15,8 +15,8 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section label */}
         <div className="flex items-center gap-2 mb-2">
-          <span className="w-8 h-0.5 bg-miu-blue" />
-          <span className="text-miu-blue font-semibold text-xs uppercase tracking-widest">About MIU</span>
+          <span className="w-8 h-0.5 bg-miu-gold" />
+          <span className="text-miu-gold font-semibold text-xs uppercase tracking-widest">About MIU</span>
         </div>
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-miu-navy mb-10">
           Rising Beyond Standards
@@ -30,15 +30,15 @@ export default function About() {
             <div className="absolute bottom-4 left-4 right-4">
               <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 flex items-center gap-4">
                 <div className="text-center border-r border-gray-200 pr-4">
-                  <p className="font-heading font-bold text-2xl text-miu-blue">2019</p>
+                  <p className="font-heading font-bold text-2xl text-miu-gold">2019</p>
                   <p className="text-xs text-gray-500">Established</p>
                 </div>
                 <div className="text-center border-r border-gray-200 pr-4">
-                  <p className="font-heading font-bold text-2xl text-miu-blue">UGC</p>
+                  <p className="font-heading font-bold text-2xl text-miu-gold">UGC</p>
                   <p className="text-xs text-gray-500">Recognized</p>
                 </div>
                 <div className="text-center">
-                  <p className="font-heading font-bold text-2xl text-miu-blue">NEP</p>
+                  <p className="font-heading font-bold text-2xl text-miu-gold">NEP</p>
                   <p className="text-xs text-gray-500">2020 Compliant</p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function About() {
             <ul className="space-y-3 mb-8">
               {highlights.map((h, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-miu-blue flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-miu-gold flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 text-sm">{h}</span>
                 </li>
               ))}
@@ -66,7 +66,7 @@ export default function About() {
             <a
               href="#schools"
               onClick={e => { e.preventDefault(); document.querySelector('#schools')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="inline-flex items-center gap-2 bg-miu-blue text-white font-semibold px-6 py-3 rounded hover:bg-miu-navy transition-colors text-sm"
+              className="inline-flex items-center gap-2 bg-miu-gold text-miu-navy font-bold px-6 py-3 rounded hover:bg-miu-navy hover:text-white transition-colors text-sm"
             >
               Explore Schools <ArrowRight className="w-4 h-4" />
             </a>

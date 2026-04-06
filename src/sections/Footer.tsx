@@ -14,24 +14,24 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-miu-navy">
       {/* CTA Bar */}
-      <div className="bg-miu-blue py-8">
+      <div className="bg-miu-gold py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div>
-              <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-1">Ready to Start Your Journey?</h3>
-              <p className="text-white/70 text-sm">Apply now for the 2026-27 academic session.</p>
+              <h3 className="font-heading text-xl md:text-2xl font-bold text-miu-navy mb-1">Ready to Start Your Journey?</h3>
+              <p className="text-miu-navy/70 text-sm font-medium">Apply now for the 2026-27 academic session.</p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => scrollTo('#admissions')}
-                className="bg-miu-gold text-miu-navy font-bold px-6 py-2.5 rounded text-sm hover:bg-yellow-400 transition-colors flex items-center gap-2"
+                className="bg-miu-navy text-white font-bold px-6 py-2.5 rounded text-sm hover:scale-105 transition-all flex items-center gap-2 shadow-md"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />
               </button>
-              <a href="mailto:admissions@miu.edu.in" className="border border-white/30 text-white px-6 py-2.5 rounded text-sm hover:bg-white/10 transition-colors flex items-center gap-2">
+              <a href="mailto:admissions@miu.edu.in" className="border-2 border-miu-navy/30 text-miu-navy font-bold px-6 py-2.5 rounded text-sm hover:bg-miu-navy hover:text-white transition-colors flex items-center gap-2">
                 <Mail className="w-4 h-4" /> Email Us
               </a>
-              <a href="https://wa.me/919036983337" target="_blank" rel="noopener noreferrer" className="border border-white/30 text-white px-6 py-2.5 rounded text-sm hover:bg-white/10 transition-colors flex items-center gap-2">
+              <a href="https://wa.me/919036983337" target="_blank" rel="noopener noreferrer" className="border-2 border-miu-navy/30 text-miu-navy font-bold px-6 py-2.5 rounded text-sm hover:bg-miu-navy hover:text-white transition-colors flex items-center gap-2">
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
             </div>

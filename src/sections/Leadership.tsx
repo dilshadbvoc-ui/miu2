@@ -10,8 +10,8 @@ export default function Leadership() {
     <section id="leadership" className="py-14 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-2">
-          <span className="w-8 h-0.5 bg-miu-blue" />
-          <span className="text-miu-blue font-semibold text-xs uppercase tracking-widest">Visitors & Leadership</span>
+          <span className="w-8 h-0.5 bg-miu-gold" />
+          <span className="text-miu-gold font-semibold text-xs uppercase tracking-widest">Visitors & Leadership</span>
         </div>
         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-miu-navy mb-10">
           Esteemed Leadership at MIU
@@ -29,7 +29,7 @@ export default function Leadership() {
                 <div className="absolute inset-0 bg-gradient-to-t from-miu-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <h3 className="font-heading font-bold text-sm md:text-base text-miu-navy leading-tight">{l.name}</h3>
-              <p className="text-miu-blue text-xs md:text-sm font-medium mt-0.5">{l.role}</p>
+              <p className="text-miu-gold text-xs md:text-sm font-medium mt-0.5">{l.role}</p>
             </div>
           ))}
         </div>
