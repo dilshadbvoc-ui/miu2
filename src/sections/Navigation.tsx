@@ -42,7 +42,7 @@ export default function Navigation() {
       </div>
 
       {/* Main Nav */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'}`}>
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-miu-gold shadow-md' : 'bg-miu-gold shadow-sm'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
@@ -57,10 +57,10 @@ export default function Navigation() {
                   key={link.name}
                   href={link.href}
                   onClick={e => { e.preventDefault(); scrollToSection(link.href); }}
-                  className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-miu-blue transition-colors relative group"
+                  className="px-3 py-2 text-sm font-bold text-miu-navy hover:text-black transition-colors relative group"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-miu-blue group-hover:w-full transition-all duration-300" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-miu-navy group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
             </nav>
@@ -70,7 +70,7 @@ export default function Navigation() {
               <a
                 href="#admissions"
                 onClick={e => { e.preventDefault(); scrollToSection('#admissions'); }}
-                className="bg-miu-blue text-white font-semibold px-5 py-2.5 rounded text-sm hover:bg-miu-navy transition-colors"
+                className="bg-miu-navy text-white font-bold px-5 py-2.5 rounded text-sm hover:bg-black transition-colors"
               >
                 Apply Now
               </a>
@@ -78,7 +78,7 @@ export default function Navigation() {
                 href="https://wa.me/919036983337"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-miu-blue text-miu-blue font-semibold px-5 py-2.5 rounded text-sm hover:bg-miu-blue hover:text-white transition-colors"
+                className="border-2 border-miu-navy text-miu-navy font-bold px-5 py-2.5 rounded text-sm hover:bg-miu-navy hover:text-white transition-colors"
               >
                 WhatsApp
               </a>
@@ -96,14 +96,14 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className="lg:hidden bg-miu-gold border-t border-miu-navy/10 shadow-lg">
             <nav className="px-4 py-4 flex flex-col gap-1">
               {navLinks.map(link => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={e => { e.preventDefault(); scrollToSection(link.href); }}
-                  className="px-4 py-3 text-gray-700 font-medium rounded hover:bg-gray-50 hover:text-miu-blue transition-colors"
+                  className="px-4 py-3 text-miu-navy font-bold rounded hover:bg-white/10 transition-colors"
                 >
                   {link.name}
                 </a>
@@ -112,7 +112,7 @@ export default function Navigation() {
                 <a
                   href="#admissions"
                   onClick={e => { e.preventDefault(); scrollToSection('#admissions'); }}
-                  className="bg-miu-blue text-white font-semibold px-5 py-3 rounded text-center"
+                  className="bg-miu-navy text-white font-bold px-5 py-3 rounded text-center"
                 >
                   Apply Now
                 </a>
