@@ -1,166 +1,35 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
-
 const leaders = [
-  {
-    name: 'Dr. Harikumar',
-    role: 'Chancellor',
-    image: '/leader-1.jpg',
-    bio: 'Leading academic visionary with decades of experience in higher education.',
-  },
-  {
-    name: 'Dr. Harikumar',
-    role: 'Vice-Chancellor',
-    image: '/leader-2.jpg',
-    bio: 'Dedicated to academic excellence and institutional growth.',
-  },
-  {
-    name: 'Prof. Dr. Potsangbam Kumar Singh',
-    role: 'Pro Vice Chancellor',
-    image: '/leader-3.jpg',
-    bio: 'Expert in educational administration and research development.',
-  },
-  {
-    name: 'Prof. T. Brajeshwari Devi',
-    role: 'Registrar',
-    image: '/leader-4.jpg',
-    bio: 'Committed to student welfare and academic operations.',
-  },
+  { name: 'Dr. Harikumar', role: 'Chancellor', image: '/leader-1.jpg' },
+  { name: 'Dr. Harikumar', role: 'Vice-Chancellor', image: '/leader-2.jpg' },
+  { name: 'Prof. Dr. Potsangbam Kumar Singh', role: 'Pro Vice Chancellor', image: '/leader-3.jpg' },
+  { name: 'Prof. T. Brajeshwari Devi', role: 'Registrar', image: '/leader-4.jpg' },
 ];
 
 export default function Leadership() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Section header
-      gsap.fromTo(
-        '.leadership-header',
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-          },
-        }
-      );
-
-      // Leader cards staggered rise
-      gsap.fromTo(
-        '.leader-card',
-        { y: 80, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: '.leaders-grid',
-            start: 'top 80%',
-          },
-        }
-      );
-
-      // Nameplates slide up
-      gsap.fromTo(
-        '.leader-nameplate',
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.15,
-          delay: 0.4,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.leaders-grid',
-            start: 'top 80%',
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      id="leadership"
-      ref={sectionRef}
-      className="section-padding bg-white relative overflow-hidden"
-    >
-      {/* Background Decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-b from-miu-blue/5 to-transparent" />
-
-      <div className="container-padding max-w-7xl mx-auto relative">
-        {/* Section Header */}
-        <div className="leadership-header text-center mb-10 md:mb-16">
-          <div className="inline-flex items-center gap-2 bg-miu-blue/10 rounded-full px-4 py-2 mb-6">
-            <span className="w-2 h-2 bg-miu-blue rounded-full" />
-            <span className="text-miu-blue font-semibold text-sm uppercase tracking-wider">Our Leadership</span>
-          </div>
-          <h2 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold text-miu-navy mb-4">
-            Guiding <span className="text-miu-blue">Excellence</span>
-          </h2>
-          <p className="text-miu-gray text-base md:text-lg max-w-2xl mx-auto">
-            Visionary leaders dedicated to shaping the future of education
-          </p>
+    <section id="leadership" className="py-14 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="w-8 h-0.5 bg-miu-blue" />
+          <span className="text-miu-blue font-semibold text-xs uppercase tracking-widest">Visitors & Leadership</span>
         </div>
+        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-miu-navy mb-10">
+          Esteemed Leadership at MIU
+        </h2>
 
-        {/* Leaders Grid */}
-        <div className="leaders-grid grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {leaders.map((leader, index) => (
-            <div
-              key={index}
-              className="leader-card group relative"
-            >
-              {/* Image Container */}
-              <div className="relative h-56 md:h-80 overflow-hidden rounded-2xl">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {leaders.map((l, i) => (
+            <div key={i} className="group text-center">
+              <div className="relative overflow-hidden rounded-xl mb-3 aspect-[3/4]">
                 <img
-                  src={leader.image}
-                  alt={leader.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={l.image}
+                  alt={l.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-miu-navy/90 via-miu-navy/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                
-                {/* Content Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
-                  <div className="leader-nameplate">
-                    <h3 className="font-heading font-bold text-sm md:text-xl text-white mb-0.5 md:mb-1">
-                      {leader.name}
-                    </h3>
-                    <p className="text-miu-gold font-medium text-xs md:text-sm md:mb-3">
-                      {leader.role}
-                    </p>
-                    <p className="text-white/70 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
-                      {leader.bio}
-                    </p>
-                    <a
-                      href="#"
-                      className="hidden md:inline-flex items-center gap-2 text-white/80 hover:text-miu-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    >
-                      Read More
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-miu-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-
-              {/* Glassmorphism Nameplate (visible on hover, desktop only) */}
-              <div className="hidden md:block absolute -bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-miu opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 transition-all duration-300">
-                <p className="text-miu-navy font-semibold text-center">{leader.name}</p>
-                <p className="text-miu-blue text-sm text-center">{leader.role}</p>
-              </div>
+              <h3 className="font-heading font-bold text-sm md:text-base text-miu-navy leading-tight">{l.name}</h3>
+              <p className="text-miu-blue text-xs md:text-sm font-medium mt-0.5">{l.role}</p>
             </div>
           ))}
         </div>

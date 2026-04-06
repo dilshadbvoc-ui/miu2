@@ -1,343 +1,133 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  MessageCircle,
-  Facebook,
-  Twitter,
-  Youtube,
-  Instagram,
-  ArrowRight
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Mail, Phone, MapPin, MessageCircle, Facebook, Twitter, Youtube, Instagram, ArrowRight } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About Us', href: '#about' },
-  { name: 'Alumni', href: '#alumni' },
-  { name: 'Anti Ragging', href: '#anti-ragging' },
-  { name: 'Awards', href: '#awards' },
-  { name: "Chancellor's Message", href: '#chancellor-message' },
-];
-
-const resources = [
-  { name: 'Academic Calendar', href: '#calendar' },
-  { name: 'Academic Collaborations', href: '#collaborations' },
-  { name: 'Academic Council', href: '#council' },
-  { name: 'Academic Leadership', href: '#leadership' },
-  { name: 'Academic Programmes', href: '#programmes' },
-  { name: 'Committee for Internal Complaint', href: '#complaint' },
-];
-
-const schools = [
-  { name: 'School of Science', href: '#science' },
-  { name: 'School of Education', href: '#education' },
-  { name: 'School of Pharmacy', href: '#pharmacy' },
-  { name: 'School of Management', href: '#management' },
-  { name: 'School of Humanities', href: '#humanities' },
-  { name: 'School of Engineering', href: '#engineering' },
-];
-
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-];
+const quickLinks = ['Home', 'About Us', 'Alumni', 'Anti Ragging', 'Awards', "Chancellor's Message"];
+const academics = ['Academic Calendar', 'Academic Collaborations', 'Academic Council', 'Academic Programmes', 'Research', 'Examinations'];
+const schools = ['School of Innovation', 'School of Agriculture', 'School of Biological Sciences', 'School of Health Sciences', 'School of Engineering', 'School of Commerce'];
 
 export default function Footer() {
-  const footerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // CTA bar
-      gsap.fromTo(
-        '.footer-cta',
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: footerRef.current,
-            start: 'top 90%',
-          },
-        }
-      );
-
-      // Footer columns
-      gsap.fromTo(
-        '.footer-col',
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'expo.out',
-          scrollTrigger: {
-            trigger: '.footer-content',
-            start: 'top 90%',
-          },
-        }
-      );
-
-      // Social icons
-      gsap.fromTo(
-        '.social-icon',
-        { scale: 0 },
-        {
-          scale: 1,
-          duration: 0.4,
-          stagger: 0.05,
-          ease: 'elastic.out(1, 0.5)',
-          scrollTrigger: {
-            trigger: '.social-links',
-            start: 'top 95%',
-          },
-        }
-      );
-    }, footerRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollTo = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer
-      id="contact"
-      ref={footerRef}
-      className="bg-miu-navy relative overflow-hidden"
-    >
+    <footer id="contact" className="bg-miu-navy">
       {/* CTA Bar */}
-      <div className="footer-cta bg-gradient-to-r from-miu-blue to-miu-blue-light py-8 relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)`,
-            backgroundSize: '200% 200%',
-            animation: 'shimmer 3s infinite',
-          }} />
-        </div>
-        
-        <div className="container-padding max-w-7xl mx-auto relative">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-miu-blue py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div>
-              <h3 className="font-heading text-xl md:text-3xl font-bold text-white mb-2">
-                Ready to Start Your Journey?
-              </h3>
-              <p className="text-white/80 text-sm md:text-base">
-                Apply now for the 2026-27 academic session and transform your future.
-              </p>
+              <h3 className="font-heading text-xl md:text-2xl font-bold text-white mb-1">Ready to Start Your Journey?</h3>
+              <p className="text-white/70 text-sm">Apply now for the 2026-27 academic session.</p>
             </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button
-                onClick={() => scrollToSection('#admissions')}
-                className="bg-miu-gold hover:bg-miu-gold-light text-miu-navy font-bold px-8 py-6 rounded-full transition-all duration-300 hover:shadow-lg"
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => scrollTo('#admissions')}
+                className="bg-miu-gold text-miu-navy font-bold px-6 py-2.5 rounded text-sm hover:bg-yellow-400 transition-colors flex items-center gap-2"
               >
-                Apply Now
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <a
-                href="mailto:admissions@miu.edu.in"
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-              >
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                  <Mail className="w-5 h-5" />
-                </div>
+                Apply Now <ArrowRight className="w-4 h-4" />
+              </button>
+              <a href="mailto:admissions@miu.edu.in" className="border border-white/30 text-white px-6 py-2.5 rounded text-sm hover:bg-white/10 transition-colors flex items-center gap-2">
+                <Mail className="w-4 h-4" /> Email Us
               </a>
-              <a
-                href="https://wa.me/919036983337"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-              >
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                  <MessageCircle className="w-5 h-5" />
-                </div>
+              <a href="https://wa.me/919036983337" target="_blank" rel="noopener noreferrer" className="border border-white/30 text-white px-6 py-2.5 rounded text-sm hover:bg-white/10 transition-colors flex items-center gap-2">
+                <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Content */}
-      <div className="footer-content container-padding max-w-7xl mx-auto py-16">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
-          {/* About Column */}
-          <div className="footer-col col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-white rounded-lg px-2 py-1">
-              <img
-                src="/miu-logo.png"
-                alt="Manipur International University"
-                className="h-9 w-auto"
-              />
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          {/* Brand */}
+          <div className="col-span-2 lg:col-span-2">
+            <div className="bg-white rounded-lg px-3 py-2 inline-block mb-4">
+              <img src="/miu-logo.png" alt="MIU" className="h-10 w-auto" />
             </div>
-            </div>
-            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">
-              MIU is an autonomous private university, committed to providing world-class education and fostering research excellence. UGC recognized and NEP 2020 compliant institution dedicated to academic innovation.
+            <p className="text-white/60 text-sm leading-relaxed mb-5 max-w-xs">
+              MIU is an autonomous private university committed to world-class education and research excellence. UGC recognized and NEP 2020 compliant.
             </p>
-            
-            {/* Social Links */}
-            <div className="social-links flex items-center gap-3">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="social-icon w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-miu-gold hover:scale-110 hover:rotate-6 transition-all duration-300"
-                >
-                  <social.icon className="w-5 h-5 text-white" />
+            <div className="flex gap-3">
+              {[Facebook, Twitter, Youtube, Instagram].map((Icon, i) => (
+                <a key={i} href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-miu-gold hover:text-miu-navy transition-all text-white">
+                  <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="footer-col">
-            <h4 className="font-heading font-bold text-white mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
-                    className="text-white/70 text-sm hover:text-miu-gold hover:translate-x-1 inline-block transition-all duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+          <div>
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
+            <ul className="space-y-2.5">
+              {quickLinks.map((l, i) => (
+                <li key={i}><a href="#" className="text-white/60 text-sm hover:text-miu-gold transition-colors">{l}</a></li>
               ))}
             </ul>
           </div>
 
-          {/* Resources */}
-          <div className="footer-col">
-            <h4 className="font-heading font-bold text-white mb-6">Resources</h4>
-            <ul className="space-y-3">
-              {resources.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/70 text-sm hover:text-miu-gold hover:translate-x-1 inline-block transition-all duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+          {/* Academics */}
+          <div>
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Academics</h4>
+            <ul className="space-y-2.5">
+              {academics.map((l, i) => (
+                <li key={i}><a href="#" className="text-white/60 text-sm hover:text-miu-gold transition-colors">{l}</a></li>
               ))}
             </ul>
           </div>
 
           {/* Schools */}
-          <div className="footer-col">
-            <h4 className="font-heading font-bold text-white mb-6">Schools</h4>
-            <ul className="space-y-3">
-              {schools.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-white/70 text-sm hover:text-miu-gold hover:translate-x-1 inline-block transition-all duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+          <div className="col-span-2 md:col-span-1">
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Schools</h4>
+            <ul className="space-y-2.5">
+              {schools.map((l, i) => (
+                <li key={i}><a href="#" className="text-white/60 text-sm hover:text-miu-gold transition-colors">{l}</a></li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Contact Info */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-miu-blue/30 flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5 text-miu-gold" />
-              </div>
-              <div>
-                <h5 className="text-white font-semibold mb-1">Address</h5>
-                <p className="text-white/70 text-sm">
-                  Manipur International University<br />
-                  Imphal, Manipur, India - 795001
-                </p>
-              </div>
+        {/* Contact */}
+        <div className="border-t border-white/10 mt-10 pt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="flex items-start gap-3">
+            <MapPin className="w-5 h-5 text-miu-gold flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white text-sm font-semibold mb-1">Address</p>
+              <p className="text-white/60 text-sm">Manipur International University<br />Imphal, Manipur, India - 795001</p>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-miu-blue/30 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-miu-gold" />
-              </div>
-              <div>
-                <h5 className="text-white font-semibold mb-1">Email</h5>
-                <a href="mailto:info@miu.edu.in" className="text-white/70 text-sm hover:text-miu-gold transition-colors block">
-                  info@miu.edu.in
-                </a>
-                <a href="mailto:admissions@miu.edu.in" className="text-white/70 text-sm hover:text-miu-gold transition-colors block">
-                  admissions@miu.edu.in
-                </a>
-              </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Mail className="w-5 h-5 text-miu-gold flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white text-sm font-semibold mb-1">Email</p>
+              <a href="mailto:info@miu.edu.in" className="text-white/60 text-sm hover:text-miu-gold transition-colors block">info@miu.edu.in</a>
+              <a href="mailto:admissions@miu.edu.in" className="text-white/60 text-sm hover:text-miu-gold transition-colors block">admissions@miu.edu.in</a>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-miu-blue/30 flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-miu-gold" />
-              </div>
-              <div>
-                <h5 className="text-white font-semibold mb-1">Phone</h5>
-                <a href="tel:+919036983337" className="text-white/70 text-sm hover:text-miu-gold transition-colors block">
-                  +91 903 698 3337
-                </a>
-                <a href="tel:+918899788788" className="text-white/70 text-sm hover:text-miu-gold transition-colors block">
-                  +91 889 978 8788
-                </a>
-              </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Phone className="w-5 h-5 text-miu-gold flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white text-sm font-semibold mb-1">Phone</p>
+              <a href="tel:+919036983337" className="text-white/60 text-sm hover:text-miu-gold transition-colors block">+91 903 698 3337</a>
+              <a href="tel:+918899788788" className="text-white/60 text-sm hover:text-miu-gold transition-colors block">+91 889 978 8788</a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="container-padding max-w-7xl mx-auto py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/60 text-sm text-center md:text-left">
-              © 2026 Manipur International University. All Rights Reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <a href="#" className="text-white/60 text-sm hover:text-miu-gold transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 text-sm hover:text-miu-gold transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-white/60 text-sm hover:text-miu-gold transition-colors">
-                Sitemap
-              </a>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/50 text-xs text-center sm:text-left">© 2026 Manipur International University. All Rights Reserved.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {['Privacy Policy', 'Terms of Service', 'Anti Ragging', 'Sitemap'].map((l, i) => (
+              <a key={i} href="#" className="text-white/50 text-xs hover:text-miu-gold transition-colors">{l}</a>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* CSS for shimmer animation */}
-      <style>{`
-        @keyframes shimmer {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-      `}</style>
     </footer>
   );
 }
