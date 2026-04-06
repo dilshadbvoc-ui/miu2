@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+import Logo from '../components/Logo';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -46,9 +47,7 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="#home" onClick={e => { e.preventDefault(); scrollToSection('#home'); }} className="flex-shrink-0">
-              <div className="bg-white rounded-lg px-2 py-1">
-                <img src="/miu-logo.png" alt="Manipur International University" className="h-10 md:h-12 w-auto" />
-              </div>
+              <Logo />
             </a>
 
             {/* Desktop Nav */}

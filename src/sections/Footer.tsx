@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, MessageCircle, Facebook, Twitter, Youtube, Instagram, ArrowRight } from 'lucide-react';
+import Logo from '../components/Logo';
 
 const quickLinks = ['Home', 'About Us', 'Alumni', 'Anti Ragging', 'Awards', "Chancellor's Message"];
 const academics = ['Academic Calendar', 'Academic Collaborations', 'Academic Council', 'Academic Programmes', 'Research', 'Examinations'];
@@ -43,8 +44,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
-            <div className="bg-white rounded-lg px-3 py-2 inline-block mb-4">
-              <img src="/miu-logo.png" alt="MIU" className="h-10 w-auto" />
+            <div className="mb-4">
+              <Logo theme="dark" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-5 max-w-xs">
               MIU is an autonomous private university committed to world-class education and research excellence. UGC recognized and NEP 2020 compliant.
