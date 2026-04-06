@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Award, GraduationCap, BookOpen, Building2, Users, FlaskConical } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   { icon: Award, value: 2019, suffix: '', label: 'Est. Year' },
@@ -27,28 +31,32 @@ function Counter({ value, suffix, run }: { value: number; suffix: string; run: b
 }
 
 export default function Rankings() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [run, setRun] = useState(false);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setRun(true); obs.disconnect(); } }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.rankings-badge', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 90%' } });
+      gsap.fromTo('.stat-item', { y: 30, opacity: 0, scale: 0.9 }, {
+        y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.08, ease: 'back.out(1.7)',
+        scrollTrigger: { trigger: '.stats-row', start: 'top 88%', onEnter: () => setRun(true) }
+      });
+    }, ref);
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={ref} className="bg-miu-navy py-8 md:py-10">
+    <section ref={ref as React.RefObject<HTMLElement>} className="bg-miu-navy py-8 md:py-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* UGC badge row */}
         <div className="text-center mb-6">
-          <span className="inline-block bg-miu-gold/20 border border-miu-gold/40 text-miu-gold text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
+          <span className="rankings-badge inline-block bg-miu-gold/20 border border-miu-gold/40 text-miu-gold text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
             UGC Recognized · State Private University · NEP 2020 Compliant
           </span>
         </div>
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
+        <div className="stats-row grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
           {stats.map((s, i) => (
-            <div key={i} className="text-center group">
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-2 group-hover:bg-miu-gold/20 transition-colors">
+            <div key={i} className="stat-item text-center group cursor-default">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-2 group-hover:bg-miu-gold/30 group-hover:scale-110 transition-all duration-300">
                 <s.icon className="w-5 h-5 text-miu-gold" />
               </div>
               <div className="font-heading font-bold text-2xl md:text-3xl text-white">
