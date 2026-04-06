@@ -29,20 +29,22 @@ export default function Navigation() {
   };
 
   return (
-    <>
+    <div className="fixed top-0 w-full z-50 flex flex-col">
       {/* Top announcement bar */}
-      <div className="bg-miu-navy text-white text-xs sm:text-sm py-2 px-4 text-center">
-        <span className="text-miu-gold font-semibold">Admissions Open 2026-27</span>
-        <span className="mx-2 text-white/50">|</span>
-        <a href="tel:+919036983337" className="hover:text-miu-gold transition-colors inline-flex items-center gap-1">
-          <Phone className="w-3 h-3" /> +91 903 698 3337
-        </a>
-        <span className="mx-2 text-white/50 hidden sm:inline">|</span>
-        <a href="#admissions" className="hidden sm:inline text-miu-gold underline hover:no-underline" onClick={e => { e.preventDefault(); scrollToSection('#admissions'); }}>Apply Now →</a>
+      <div className={`transition-all duration-300 overflow-hidden bg-miu-navy text-white text-xs sm:text-sm flex items-center justify-center ${isScrolled ? 'max-h-0 opacity-0 py-0' : 'max-h-12 opacity-100 py-2'}`}>
+        <div className="px-4 text-center">
+          <span className="text-miu-gold font-semibold">Admissions Open 2026-27</span>
+          <span className="mx-2 text-white/50">|</span>
+          <a href="tel:+919036983337" className="hover:text-miu-gold transition-colors inline-flex items-center gap-1">
+            <Phone className="w-3 h-3" /> +91 903 698 3337
+          </a>
+          <span className="mx-2 text-white/50 hidden sm:inline">|</span>
+          <a href="#admissions" className="hidden sm:inline text-miu-gold underline hover:no-underline" onClick={e => { e.preventDefault(); scrollToSection('#admissions'); }}>Apply Now →</a>
+        </div>
       </div>
 
       {/* Main Nav */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-miu-gold shadow-md' : 'bg-miu-gold shadow-sm'}`}>
+      <header className={`transition-all duration-300 ${isScrolled ? 'bg-miu-gold/95 backdrop-blur-md shadow-md' : 'bg-miu-gold/20 backdrop-blur-md border-b border-white/10'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
@@ -57,10 +59,10 @@ export default function Navigation() {
                   key={link.name}
                   href={link.href}
                   onClick={e => { e.preventDefault(); scrollToSection(link.href); }}
-                  className="px-3 py-2 text-sm font-bold text-miu-navy hover:text-black transition-colors relative group"
+                  className="px-3 py-2 text-sm font-bold text-white hover:text-miu-gold transition-colors relative group"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-miu-navy group-hover:w-full transition-all duration-300" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
             </nav>
@@ -121,6 +123,6 @@ export default function Navigation() {
           </div>
         )}
       </header>
-    </>
+    </div>
   );
 }
