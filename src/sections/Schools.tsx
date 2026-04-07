@@ -14,6 +14,35 @@ const schools = [
   { icon: TrendingUp, title: 'Commerce & Management', short: 'Management', image: '/school-commerce.jpg', color: 'bg-teal-600', programs: '16+ Programs', description: 'Theoretical foundations with practical exposure to business environments and internships.' },
 ];
 
+const programCategories = [
+  { 
+    title: 'Undergraduate Programs',
+    short: 'UG',
+    desc: 'Build strong academic foundation with career-focused undergraduate degree programs. Our UG programs focus on developing essential skills, industry awareness, and confidence through projects and internships.'
+  },
+  { 
+    title: 'Postgraduate Programs',
+    short: 'PG',
+    desc: 'Advance your knowledge and specialize in your chosen field for better career growth. Focus on advanced learning, research, and leadership preparation.'
+  },
+  { 
+    title: 'Doctoral Programs',
+    short: 'PhD',
+    desc: 'Pursue research and contribute to knowledge with advanced doctoral programs. Focus on in-depth study, innovation, and original research work guided by experienced faculty.'
+  },
+  { 
+    title: 'Diploma Programs',
+    short: 'Diploma',
+    desc: 'Gain practical skills quickly with short-term, job-oriented diploma courses. Industry-oriented curriculum ideal for entering the workforce quickly.'
+  }
+];
+
+const programHighlights = [
+  { title: 'BBA', desc: 'Marketing, Finance, HR, and Entrepreneurship with practical projects.' },
+  { title: 'BCA', desc: 'Programming basics, software concepts, and digital services.' },
+  { title: 'MBA', desc: 'Strategic thinking, leadership, and decision-making for management roles.' }
+];
+
 export default function Schools() {
   const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
@@ -24,12 +53,11 @@ export default function Schools() {
       gsap.fromTo('.schools-heading', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 80%' } });
       gsap.fromTo('.school-tab', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: 'expo.out', scrollTrigger: { trigger: '.school-tabs', start: 'top 85%' } });
       gsap.fromTo('.school-detail', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'expo.out', scrollTrigger: { trigger: '.school-detail', start: 'top 85%' } });
-      gsap.fromTo('.school-thumb', { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: 0.07, ease: 'back.out(1.4)', scrollTrigger: { trigger: '.school-thumbs', start: 'top 88%' } });
+      gsap.fromTo('.category-card', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.categories-grid', start: 'top 85%' } });
     }, ref);
     return () => ctx.revert();
   }, []);
 
-  // Animate detail panel on tab change
   useEffect(() => {
     gsap.fromTo('.school-detail', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out' });
   }, [active]);
@@ -55,11 +83,7 @@ export default function Schools() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`school-tab flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                active === i
-                  ? 'bg-miu-gold text-white shadow-md scale-105'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-miu-gold hover:text-miu-gold'
-              }`}
+              className={`school-tab flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${active === i ? 'bg-miu-gold text-white shadow-md scale-105' : 'bg-white text-gray-600 border border-gray-200 hover:border-miu-gold hover:text-miu-gold'}`}
             >
               <s.icon className="w-4 h-4" />
               {s.short}
@@ -67,40 +91,39 @@ export default function Schools() {
           ))}
         </div>
 
-        <div className="school-detail grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+        <div className="school-detail grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
           <div className="relative rounded-xl overflow-hidden h-56 md:h-72 shadow-md">
             <img src={schools[active].image} alt={schools[active].title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-            <div className={`absolute inset-0 ${schools[active].color} opacity-25`} />
+            <div className={`absolute inset-0 ${active === 0 ? 'bg-amber-500' : active === 1 ? 'bg-green-600' : active === 2 ? 'bg-blue-600' : active === 3 ? 'bg-rose-600' : active === 4 ? 'bg-purple-600' : 'bg-teal-600'} opacity-25`} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-4 left-4">
               <span className="bg-white/90 text-miu-navy text-xs font-bold px-3 py-1 rounded-full">{schools[active].programs}</span>
             </div>
           </div>
           <div className="flex flex-col justify-center">
-            <div className={`w-12 h-12 rounded-xl ${schools[active].color} flex items-center justify-center mb-4 shadow-md`}>
+            <div className={`w-12 h-12 rounded-xl ${active === 0 ? 'bg-amber-500' : active === 1 ? 'bg-green-600' : active === 2 ? 'bg-blue-600' : active === 3 ? 'bg-rose-600' : active === 4 ? 'bg-purple-600' : 'bg-teal-600'} flex items-center justify-center mb-4 shadow-md`}>
               {(() => { const Icon = schools[active].icon; return <Icon className="w-6 h-6 text-white" />; })()}
             </div>
             <h3 className="font-heading font-bold text-xl md:text-2xl text-miu-navy mb-3">{schools[active].title}</h3>
             <p className="text-gray-600 leading-relaxed mb-6">{schools[active].description}</p>
-            <a href="#" className="inline-flex items-center gap-2 text-miu-gold font-semibold text-sm hover:text-miu-navy transition-colors group">
-              Explore Programs <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {programHighlights.map((h, i) => (
+                <div key={i} className="bg-miu-gold/10 text-miu-gold text-[10px] font-bold px-2.5 py-1 rounded-full border border-miu-gold/20">
+                  {h.title}: {h.desc.slice(0, 20)}...
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="school-thumbs grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {schools.map((s, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`school-thumb group relative rounded-xl overflow-hidden h-28 cursor-pointer transition-all duration-300 ${active === i ? 'ring-2 ring-miu-gold ring-offset-2 scale-105' : 'hover:scale-102'}`}
-            >
-              <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute bottom-2 left-2 right-2">
-                <p className="text-white text-xs font-semibold leading-tight">{s.short}</p>
-              </div>
-            </button>
+        {/* Degree Categories */}
+        <div className="categories-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {programCategories.map((c, i) => (
+            <div key={i} className="category-card bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
+              <span className="inline-block text-miu-gold font-bold text-xs mb-3 bg-miu-gold/5 px-2 py-1 rounded">{c.short}</span>
+              <h4 className="font-heading font-bold text-lg text-miu-navy mb-3 group-hover:text-miu-gold transition-colors">{c.title}</h4>
+              <p className="text-gray-500 text-xs leading-relaxed">{c.desc}</p>
+            </div>
           ))}
         </div>
       </div>

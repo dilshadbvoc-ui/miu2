@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TrendingUp, Users, Building, Star } from 'lucide-react';
+import { TrendingUp, Users, Building } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const placementStats = [
-  { icon: Building, value: 200, suffix: '+', label: 'Recruiters Hired MIU Students' },
-  { icon: TrendingUp, value: 500, suffix: '+', label: 'Placement Offers' },
+  { icon: Building, value: 500, suffix: '+', label: 'Recruiters' },
+  { icon: TrendingUp, value: 1000, suffix: '+', label: 'Placement Offers' },
   { icon: Users, value: 95, suffix: '%', label: 'Placement Rate' },
-  { icon: Star, value: 8, suffix: 'LPA', label: 'Avg. Package (Top 25%)' },
+  { icon: Building, value: 50, suffix: '+', label: 'Industry Tie-Ups' },
 ];
 
 const companies = [

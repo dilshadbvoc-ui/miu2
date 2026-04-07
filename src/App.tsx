@@ -4,13 +4,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MessageCircle, ArrowUp } from 'lucide-react';
 import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
-import Rankings from './sections/Rankings';
+import Recognition from './sections/Recognition';
 import About from './sections/About';
+import FoundingJourney from './sections/FoundingJourney';
+import Symbolism from './sections/Symbolism';
 import Schools from './sections/Schools';
 import Placements from './sections/Placements';
 import Features from './sections/Features';
-import Leadership from './sections/Leadership';
-import Gallery from './sections/Gallery';
 import NewsEvents from './sections/NewsEvents';
 import Footer from './sections/Footer';
 
@@ -35,13 +35,13 @@ function App() {
       <Navigation />
       <main>
         <Hero />
-        <Rankings />
+        <Recognition />
         <About />
+        <FoundingJourney />
+        <Symbolism />
         <Schools />
         <Placements />
         <Features />
-        <Leadership />
-        <Gallery />
         <NewsEvents />
       </main>
       <Footer />
