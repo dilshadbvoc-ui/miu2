@@ -42,7 +42,7 @@ export default function Navigation() {
       {/* Main white nav — exactly like LPU */}
       <header className={`transition-all duration-300 ${isScrolled ? 'bg-yellow-50/90 backdrop-blur-md shadow-md' : 'bg-miu-gold/10 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-[70px]">
+          <div className="flex items-center justify-between h-20 md:h-24">
 
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
