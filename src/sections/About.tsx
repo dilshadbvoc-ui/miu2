@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal';
