@@ -39,12 +39,13 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         miu: {
-          blue: "#1e3a8a",
-          "blue-light": "#3b82f6",
-          gold: "#d4af37",
-          "gold-light": "#f4d03f",
-          navy: "#0f172a",
-          gray: "#64748b",
+          blue: "#3D2B00",         // logo dark brown — used as primary/interactive color
+          "blue-light": "#6B4A00", // medium brown
+          gold: "#C9A227",         // logo yellow/gold — accent
+          "gold-light": "#E8C547", // lighter gold for hovers
+          navy: "#2A1D00",         // deepest brown for dark backgrounds
+          gray: "#6B5E4A",         // warm brown-gray for body text
+          cream: "#FAF7F2",        // warm off-white background
         },
       },
       fontFamily: {
@@ -61,8 +62,8 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        miu: "0 10px 40px -10px rgba(30, 58, 138, 0.25)",
-        "miu-lg": "0 25px 50px -12px rgba(30, 58, 138, 0.35)",
+        miu: "0 10px 40px -10px rgba(61, 43, 0, 0.25)",
+        "miu-lg": "0 25px 50px -12px rgba(61, 43, 0, 0.35)",
       },
       keyframes: {
         "accordion-down": {
@@ -82,8 +83,8 @@ module.exports = {
           "50%": { transform: "translateY(-15px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(212, 175, 55, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(212, 175, 55, 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(201, 162, 39, 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(201, 162, 39, 0.6)" },
         },
         "slide-up": {
           "0%": { transform: "translateY(20px)", opacity: "0" },

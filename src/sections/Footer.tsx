@@ -1,19 +1,33 @@
 import { Mail, Phone, MapPin, MessageCircle, Facebook, Twitter, Youtube, Instagram, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Logo from '../components/Logo';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const quickLinks = ['Home', 'About Us', 'Alumni', 'Anti Ragging', 'Awards', "Chancellor's Message"];
 const academics = ['Academic Calendar', 'Academic Collaborations', 'Academic Council', 'Academic Programmes', 'Research', 'Examinations'];
 const schools = ['School of Innovation', 'School of Agriculture', 'School of Biological Sciences', 'School of Health Sciences', 'School of Engineering', 'School of Commerce'];
 
 export default function Footer() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.footer-cta', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'expo.out', scrollTrigger: { trigger: ref.current, start: 'top 90%' } });
+      gsap.fromTo('.footer-col', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'expo.out', scrollTrigger: { trigger: '.footer-grid', start: 'top 90%' } });
+      gsap.fromTo('.footer-social a', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, stagger: 0.07, ease: 'back.out(1.7)', scrollTrigger: { trigger: '.footer-social', start: 'top 95%' } });
+      gsap.fromTo('.footer-contact-item', { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'expo.out', scrollTrigger: { trigger: '.footer-contact', start: 'top 95%' } });
+    }, ref);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <footer id="contact" className="bg-miu-navy">
+    <footer ref={ref as React.RefObject<HTMLElement>} className="bg-miu-navy">
       {/* CTA Bar */}
-      <div className="bg-miu-gold py-8">
+      <div className="footer-cta bg-miu-gold py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div>
@@ -21,12 +35,12 @@ export default function Footer() {
               <p className="text-miu-navy/70 text-sm font-medium">Apply now for the 2026-27 academic session.</p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => scrollTo('#admissions')}
+              <Link
+                to="/admissions"
                 className="bg-miu-navy text-white font-bold px-6 py-2.5 rounded text-sm hover:scale-105 transition-all flex items-center gap-2 shadow-md"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
               <a href="mailto:admissions@miu.edu.in" className="border-2 border-miu-navy/30 text-miu-navy font-bold px-6 py-2.5 rounded text-sm hover:bg-miu-navy hover:text-white transition-colors flex items-center gap-2">
                 <Mail className="w-4 h-4" /> Email Us
               </a>
@@ -40,16 +54,24 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="footer-grid grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand */}
-          <div className="col-span-2 lg:col-span-2">
-            <div className="bg-white rounded-lg px-3 py-2 inline-block mb-4">
-              <img src="/miu-logo.png" alt="MIU" className="h-10 w-auto" />
+          <div className="footer-col col-span-2 lg:col-span-2">
+            <div className="mb-4">
+              <Logo theme="dark" className="scale-90 md:scale-100 origin-left" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-5 max-w-xs">
               MIU is an autonomous private university committed to world-class education and research excellence. UGC recognized and NEP 2020 compliant.
             </p>
-            <div className="flex gap-3">
+            {/* Newsletter */}
+            <div className="mb-5">
+              <p className="text-white text-xs font-semibold uppercase tracking-wider mb-2">Stay Updated</p>
+              <form className="flex gap-2" onSubmit={e => e.preventDefault()}>
+                <input type="email" placeholder="Your email" className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-white text-xs placeholder-white/40 focus:outline-none focus:border-miu-gold transition-colors" />
+                <button type="submit" className="bg-miu-gold text-miu-navy font-bold px-3 py-2 rounded text-xs hover:bg-yellow-400 transition-colors whitespace-nowrap">Subscribe</button>
+              </form>
+            </div>
+            <div className="footer-social flex gap-3">
               {[Facebook, Twitter, Youtube, Instagram].map((Icon, i) => (
                 <a key={i} href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-miu-gold hover:text-miu-navy transition-all text-white">
                   <Icon className="w-4 h-4" />
@@ -59,7 +81,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="footer-col">
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-2.5">
               {quickLinks.map((l, i) => (
@@ -69,7 +91,7 @@ export default function Footer() {
           </div>
 
           {/* Academics */}
-          <div>
+          <div className="footer-col">
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Academics</h4>
             <ul className="space-y-2.5">
               {academics.map((l, i) => (
@@ -79,7 +101,7 @@ export default function Footer() {
           </div>
 
           {/* Schools */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="footer-col col-span-2 md:col-span-1">
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Schools</h4>
             <ul className="space-y-2.5">
               {schools.map((l, i) => (
@@ -90,8 +112,8 @@ export default function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="border-t border-white/10 mt-10 pt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="flex items-start gap-3">
+        <div className="footer-contact border-t border-white/10 mt-10 pt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="footer-contact-item flex items-start gap-3">
             <MapPin className="w-5 h-5 text-miu-gold flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-white text-sm font-semibold mb-1">Address</p>

@@ -9,32 +9,32 @@ const culturalSymbols = [
   {
     title: 'Lai Haraoba',
     content: 'Manipur\'s most sacred festival, a living reenactment of creation. At MIU, this spirit of sacred performance informs our approach to learning.',
-    image: 'https://images.unsplash.com/photo-1620138927429-3733cc856403?q=80&w=800&auto=format&fit=crop'
+    image: '/assets/images/about-heritage.png'
   },
   {
     title: 'The Sangai',
     content: 'The endangered dancing deer, a symbol of rare beauty and resilience. The Sangai reminds us that heritage requires care and protection.',
-    image: 'https://images.unsplash.com/photo-1547407139-3c921a66005c?q=80&w=800&auto=format&fit=crop'
+    image: '/school-biology.jpg'
   },
   {
     title: 'Loktak Lake',
     content: 'The largest fresh water lake in Northeast India. MIU draws from this: an institution that runs deep and nourishes its community.',
-    image: 'https://images.unsplash.com/photo-1620138927429-3733cc856403?q=80&w=800&auto=format&fit=crop' // Using placeholder, will generate later
+    image: '/news-1.jpg'
   },
   {
     title: 'Manipuri Dance',
     content: 'A language of devotion and extraordinary grace. At MIU, this art is honoured as a living intellectual practice.',
-    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop'
+    image: '/gallery-5.jpg'
   },
   {
     title: 'Kangla Fort',
     content: 'The spiritual heartbeat of Meitei civilization. It represents sovereignty and identity, pride we inherit in every program.',
-    image: 'https://images.unsplash.com/photo-1620138927429-3733cc856403?q=80&w=800&auto=format&fit=crop'
+    image: '/assets/images/hero-campus.png'
   },
   {
     title: 'Thang-Ta',
     content: 'Ancient martial art, a philosophy of focused strength. It represents the qualities MIU develops through academic rigor.',
-    image: 'https://images.unsplash.com/photo-1599058917233-333060fc64b5?q=80&w=800&auto=format&fit=crop'
+    image: '/school-innovation.jpg'
   }
 ];
 
@@ -139,7 +139,7 @@ export default function Symbolism() {
         {activeTab === 'elephants' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="symbol-reveal order-2 lg:order-1 relative">
-              <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=1000&auto=format&fit=crop" alt="Guardian Elephant" className="rounded-3xl shadow-2xl" />
+              <img src="/assets/images/about-heritage.png" alt="Guardian Elephant" className="rounded-3xl shadow-2xl" />
               <div className="absolute -bottom-6 -right-6 bg-miu-gold p-8 rounded-2xl shadow-xl hidden md:block">
                 <Shield className="w-12 h-12 text-miu-navy" />
               </div>
